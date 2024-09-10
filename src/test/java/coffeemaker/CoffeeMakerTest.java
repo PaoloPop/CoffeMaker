@@ -20,13 +20,13 @@ public class CoffeeMakerTest {
 	@BeforeEach
 	public void setUp() {
 		// add setup here
-//		CuT = new CoffeeMaker();
+		CuT = new CoffeeMaker();
 	}
 
 	@AfterEach
 	public void tearDown() {
 		// add tear down here
-//		CuT = null;
+		CuT = null;
 	}
 
 	@Test
