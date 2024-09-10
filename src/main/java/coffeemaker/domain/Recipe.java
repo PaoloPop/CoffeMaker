@@ -41,7 +41,7 @@ public class Recipe {
    * @param name The name to set; must have at least one non-blank character.
    */
   public void setName(String name) {
-    if (name != null) {
+    if (name != null && !name.trim().isEmpty()) {
       this.name = name;
     }
   }
@@ -89,12 +89,13 @@ public class Recipe {
     } catch (NumberFormatException e) {
       throw new RecipeException("Units of coffee must be a positive integer");
     }
-    if (amtCoffee >= 0) {
+    if (amtCoffee > 0) {
       this.amtCoffee = amtCoffee;
     } else {
       throw new RecipeException("Units of coffee must be a positive integer");
     }
   }
+
 
   /**
    * Get the amount of milk needed for this recipe.
