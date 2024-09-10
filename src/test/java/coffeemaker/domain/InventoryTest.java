@@ -2,10 +2,8 @@ package coffeemaker.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import coffeemaker.exceptions.InventoryException;
@@ -29,7 +27,6 @@ class InventoryTest {
         Inv = null;
     }
 
-    @NotNull
     public static Recipe recipeHelperConstructor(String name, String price, String amtCoffee, String amtMilk, String amtSugar, String amtChocolate){
         Recipe recipe = new Recipe();
         recipe.setName(name);
