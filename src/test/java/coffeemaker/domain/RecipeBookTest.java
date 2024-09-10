@@ -135,4 +135,27 @@ class RecipeBookTest {
         // Result
         assertEquals(expectedReturn, actualReturn);
     }
+
+    @Test
+    public void testReplaceRecipeSuccess(){
+        // Set Up
+        RecipeBook recipeBook=new RecipeBook();
+        Recipe recipeOld=new Recipe();
+        recipeOld.setName("Old Recipe");
+        recipeBook.addRecipe(recipeOld);
+
+        Recipe recipeNew=new Recipe();
+        recipeNew.setName("New Recipe");
+
+        //Actual
+        String actualReturn=recipeBook.replaceRecipe(0, recipeNew);
+
+        // Expected
+        String expectedReturn="Old Recipe";
+
+        System.out.println(recipeBook.getRecipes()[0].getName());
+
+        // Result
+        assertEquals(expectedReturn, actualReturn);
+    }
 }
