@@ -29,7 +29,6 @@ class InventoryTest {
     }
 
     @Test
-    @DisplayName("Test getting the amount of coffee.")
     public void testGetCoffee() {
         // Set up
         int expected = 15;
@@ -38,11 +37,10 @@ class InventoryTest {
         int actual = Inv.getCoffee();
 
         // Assert
-        assertTrue(expected == actual, "Coffee sould start at 15 by default.");
+        assertEquals(expected,actual);
     }
 
     @Test
-    @DisplayName("Test setting the amount of coffee with a value above zero.")
     public void testSetCoffeeAboveZero() {
         // Set up
         int expected = 7;
@@ -51,11 +49,10 @@ class InventoryTest {
         int actual = Inv.getCoffee();
 
         // Assert
-        assertTrue(expected == actual, "Coffee sould equal the set amount.");
+        assertEquals(expected,actual);
     }
 
     @Test
-    @DisplayName("Test setting the amount of coffee with a zero value.")
     public void testSetCoffeeZero() {
         // Set up
         int expected = 0;
@@ -64,11 +61,10 @@ class InventoryTest {
         int actual = Inv.getCoffee();
 
         // Assert
-        assertTrue(expected == actual, "Coffee sould equal the set amount.");
+        assertEquals(expected,actual);
     }
 
     @Test
-    @DisplayName("Test setting the amount of coffee with a value belowzero.")
     public void testSetCoffeeBelowZero() {
         // Set up
         int expected = 15;
@@ -77,11 +73,10 @@ class InventoryTest {
         int actual = Inv.getCoffee();
 
         // Assert
-        assertTrue(expected == actual, "Coffee sould equal the set amount.");
+        assertEquals(expected,actual);
     }
 
     @Test
-    @DisplayName("Test adding coffee to the inventory.")
     public void testAddingCoffeeAboveZero() {
         // Set up
         int expected = 17;
@@ -90,11 +85,10 @@ class InventoryTest {
         int actual = Inv.getCoffee();
 
         // Assert
-        assertTrue(expected == actual, "Coffee sould equal the set amount.");
+        assertEquals(expected,actual);
     }
 
     @Test
-    @DisplayName("Test adding 0 coffee to the inventory.")
     public void testAddingCoffeeZero() {
         // Set up
         int expected = 15;
@@ -103,14 +97,22 @@ class InventoryTest {
         int actual = Inv.getCoffee();
 
         // Assert
-        assertTrue(expected == actual, "Coffee sould equal the set amount.");
+        assertEquals(expected,actual);
     }
 
     @Test
-    @DisplayName("Test adding negative coffee to the inventory.")
     public void testAddingCoffeeBelowZero() {
         // Set up
         String valueToAdd = "-2";
+
+        // Assert
+        assertThrows(InventoryException.class, () -> Inv.addCoffee(valueToAdd));
+    }
+
+    @Test
+    public void testAddingCoffeeWrongType() {
+        // Set up
+        String valueToAdd = "test";
 
         // Assert
         assertThrows(InventoryException.class, () -> Inv.addCoffee(valueToAdd));
