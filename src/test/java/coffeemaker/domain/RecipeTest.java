@@ -2,6 +2,6 @@ package coffeemaker.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class InventoryTestTest {
+class RecipeTest {
 
 }
