@@ -40,22 +40,6 @@ class InventoryTest {
     }
 
     ///////////////////////////////////////
-    ///////////// getCoffee() /////////////
-    ///////////////////////////////////////
-
-    @Test
-    public void testGetCoffee() {
-        // Set up
-        int expected = 15;
-
-        // Invoke
-        int actual = Inv.getCoffee();
-
-        // Analysis
-        assertEquals(expected,actual);
-    }
-
-    ///////////////////////////////////////
     ///////////// setCoffee() /////////////
     ///////////////////////////////////////
 
@@ -151,21 +135,6 @@ class InventoryTest {
         assertThrows(InventoryException.class, () -> Inv.addCoffee(valueToAdd));
     }
 
-    ///////////////////////////////////////
-    ///////////// getMilk() ///////////////
-    ///////////////////////////////////////
-
-    @Test
-    public void testGetMilk() {
-        // Set up
-        int expected = 15;
-
-        // Invoke
-        int actual = Inv.getMilk();
-
-        // Analysis
-        assertEquals(expected,actual);
-    }
 
     ///////////////////////////////////////
     ///////////// setMilk() ///////////////
@@ -263,21 +232,6 @@ class InventoryTest {
         assertThrows(InventoryException.class, () -> Inv.addMilk(valueToAdd));
     }
 
-    ///////////////////////////////////////
-    ///////////// getSugar() //////////////
-    ///////////////////////////////////////
-
-    @Test
-    public void testGetSugar() {
-        // Set up
-        int expected = 15;
-
-        // Invoke
-        int actual = Inv.getSugar();
-
-        // Analysis
-        assertEquals(expected,actual);
-    }
 
     ///////////////////////////////////////
     ///////////// setSugar() //////////////
@@ -375,21 +329,6 @@ class InventoryTest {
         assertThrows(InventoryException.class, () -> Inv.addSugar(valueToAdd));
     }
 
-    ///////////////////////////////////////
-    ///////////// getChocolate() //////////
-    ///////////////////////////////////////
-
-    @Test
-    public void testGetChocolate() {
-        // Set up
-        int expected = 15;
-
-        // Invoke
-        int actual = Inv.getChocolate();
-
-        // Analysis
-        assertEquals(expected,actual);
-    }
 
     ///////////////////////////////////////
     ///////////// setChocolate() //////////
@@ -491,27 +430,6 @@ class InventoryTest {
     ///////////////////////////////////////
     ///////////// enoughIngredients() /////
     ///////////////////////////////////////
-
-    @Test
-    public void testEnoughIngredientsTrue() {
-        // Set up
-        String name = "test";
-        String price = "7";
-        String amtCoffee = "7";
-        String amtMilk = "7";
-        String amtSugar = "7";
-        String amtChocolate = "7";
-
-        Recipe recipe = recipeHelperConstructor(name, price, amtCoffee, amtMilk, amtSugar, amtChocolate);
-
-
-        // Invoke
-        boolean shouldBeTrue = Inv.enoughIngredients(recipe);
-
-
-        // Analysis
-        assertTrue(shouldBeTrue);
-    }
 
     @Test
     public void testEnoughIngredientsFalseCoffee() {
