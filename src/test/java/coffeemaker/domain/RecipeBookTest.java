@@ -24,7 +24,9 @@ class RecipeBookTest {
     public void testAddRecipeSuccess(){
         // Set Up
         RecipeBook recipeBook = new RecipeBook();
+        System.out.println(recipeBook.getRecipes()[0]==null);
         Recipe recipe=new Recipe();
+        recipe.setName("test recipe");
 
         // Actual
         boolean actualReturn=recipeBook.addRecipe(recipe);
@@ -135,6 +137,30 @@ class RecipeBookTest {
         // Result
         assertEquals(expectedReturn, actualReturn);
     }
+    
+    @Test
+    public void testDeleteThenAddRecipe(){
+        RecipeBook recipeBook=new RecipeBook();
+        Recipe recipe1=new Recipe();
+        recipe1.setName("recipe1");
+        recipeBook.addRecipe(recipe1);
+        recipeBook.deleteRecipe(0);
+
+        Recipe recipe2=new Recipe();
+        recipe2.setName("recipe2");
+        
+        //Actual
+        Recipe expectedReturn=recipe2;
+        
+        //Expected
+        recipeBook.addRecipe(recipe2);
+        Recipe actualReturn=recipeBook.getRecipes()[0];
+
+        // Result
+        assertEquals(expectedReturn, actualReturn);
+
+
+    }
 
     @Test
     public void testReplaceRecipeSuccess(){
@@ -153,9 +179,29 @@ class RecipeBookTest {
         // Expected
         String expectedReturn="Old Recipe";
 
-        System.out.println(recipeBook.getRecipes()[0].getName());
+        // Result
+        assertEquals(expectedReturn, actualReturn);
+    }
+
+    @Test
+    public void testReplaceRecipeNull(){
+        // Set Up
+        RecipeBook recipeBook=new RecipeBook();
+        // Recipe recipeOld=new Recipe();
+        // recipeOld.setName("Old Recipe");
+        // recipeBook.addRecipe(recipeOld);
+
+        Recipe recipeNew=new Recipe();
+        recipeNew.setName("New Recipe");
+
+        //Actual
+        String actualReturn=recipeBook.replaceRecipe(0, recipeNew);
+
+        // Expected
+        String expectedReturn=null;
 
         // Result
         assertEquals(expectedReturn, actualReturn);
     }
+
 }

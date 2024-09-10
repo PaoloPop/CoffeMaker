@@ -18,6 +18,7 @@ public class CoffeeMakerTest {
 	/**
 	 * Component under Test.
 	 */
+	@SuppressWarnings("unused")
 	private CoffeeMaker CuT;
 
 	@BeforeEach

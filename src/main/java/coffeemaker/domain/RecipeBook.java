@@ -91,7 +91,10 @@ public class RecipeBook {
   public String deleteRecipe(int recipeToDelete) {
     if (recipeArray[recipeToDelete] != null) {
       String recipeName = recipeArray[recipeToDelete].getName();
-      recipeArray[recipeToDelete] = new Recipe();
+      // After deletion, array index should be set to null not to a new recipe.
+      // recipeArray[recipeToDelete] = new Recipe();
+      // Corrected code sets recipeToDelete index spot to null
+      recipeArray[recipeToDelete]=null;
       return recipeName;
     } else {
       return null;
