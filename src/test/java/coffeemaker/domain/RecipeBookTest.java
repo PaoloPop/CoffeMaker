@@ -141,7 +141,7 @@ class RecipeBookTest {
     }
 
     @Test
-    public void testDeleteRecipeEndOfArray(){
+    public void testDeleteRecipeEndOfRecipeBook(){
         // Set Up
         RecipeBook recipeBook = new RecipeBook();
         Recipe recipe1=new Recipe();
