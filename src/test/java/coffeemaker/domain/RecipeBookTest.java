@@ -24,12 +24,44 @@ class RecipeBookTest {
     public void testAddRecipeSuccess(){
         // Set Up
         RecipeBook recipeBook = new RecipeBook();
-        System.out.println(recipeBook.getRecipes()[0]==null);
         Recipe recipe=new Recipe();
         recipe.setName("test recipe");
 
         // Actual
         boolean actualReturn=recipeBook.addRecipe(recipe);
+
+        // Expected
+        boolean expectedReturn=true;
+
+        // for(int i=0;i<recipeBook.getRecipes().length;i++){
+        //     System.out.println(recipeBook.getRecipes()[i]);
+        // }
+
+        // Result
+        assertEquals(expectedReturn, actualReturn);
+    }
+
+    @Test
+    public void testAddRecipeEndOfRecipeBook(){
+        // Set Up
+        RecipeBook recipeBook = new RecipeBook();
+        Recipe recipe1=new Recipe();
+        recipe1.setName("1");
+        recipeBook.addRecipe(recipe1);
+        
+        Recipe recipe2=new Recipe();
+        recipe2.setName("2");
+        recipeBook.addRecipe(recipe2);
+        
+        Recipe recipe3=new Recipe();
+        recipe3.setName("3");
+        recipeBook.addRecipe(recipe3);
+
+        Recipe recipe4=new Recipe();
+        recipe4.setName("4");
+
+        // Actual
+        boolean actualReturn=recipeBook.addRecipe(recipe4);
 
         // Expected
         boolean expectedReturn=true;
@@ -187,9 +219,6 @@ class RecipeBookTest {
     public void testReplaceRecipeNull(){
         // Set Up
         RecipeBook recipeBook=new RecipeBook();
-        // Recipe recipeOld=new Recipe();
-        // recipeOld.setName("Old Recipe");
-        // recipeBook.addRecipe(recipeOld);
 
         Recipe recipeNew=new Recipe();
         recipeNew.setName("New Recipe");
@@ -204,4 +233,36 @@ class RecipeBookTest {
         assertEquals(expectedReturn, actualReturn);
     }
 
+    @Test
+    public void testReplaceRecipeEndOfRecipeBook(){
+        // Set Up
+        RecipeBook recipeBook = new RecipeBook();
+        Recipe recipe1=new Recipe();
+        recipe1.setName("1");
+        recipeBook.addRecipe(recipe1);
+        
+        Recipe recipe2=new Recipe();
+        recipe2.setName("2");
+        recipeBook.addRecipe(recipe2);
+        
+        Recipe recipe3=new Recipe();
+        recipe3.setName("3");
+        recipeBook.addRecipe(recipe3);
+
+        Recipe recipe4=new Recipe();
+        recipe4.setName("4");
+        recipeBook.addRecipe(recipe4);
+
+        Recipe recipeNew=new Recipe();
+        recipeNew.setName("New Recipe");
+
+        //Actual
+        String actualReturn=recipeBook.replaceRecipe(3, recipeNew);
+
+        // Expected
+        String expectedReturn="4";
+
+        // Result
+        assertEquals(expectedReturn, actualReturn);
+    }
 }
