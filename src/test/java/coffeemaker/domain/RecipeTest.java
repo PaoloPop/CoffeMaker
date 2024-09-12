@@ -149,30 +149,6 @@ class RecipeTest {
     }
 
     @Test
-    public void testEquals_sameObject() {
-        Recipe recipe = new Recipe();
-        assertTrue(recipe.equals(recipe), "An object should equal itself.");
-    }
-
-    @Test
-    public void testEquals_differentObjectSameName() {
-        Recipe recipe1 = new Recipe();
-        Recipe recipe2 = new Recipe();
-        recipe1.setName("Latte");
-        recipe2.setName("Latte");
-        assertTrue(recipe1.equals(recipe2), "Recipes with the same name should be equal.");
-    }
-
-    @Test
-    public void testEquals_differentObjectDifferentName() {
-        Recipe recipe1 = new Recipe();
-        Recipe recipe2 = new Recipe();
-        recipe1.setName("Latte");
-        recipe2.setName("Espresso");
-        assertFalse(recipe1.equals(recipe2), "Recipes with different names should not be equal.");
-    }
-
-    @Test
     public void testHashCode_differentName() {
         Recipe recipe1 = new Recipe();
         Recipe recipe2 = new Recipe();
@@ -187,28 +163,6 @@ class RecipeTest {
         Recipe recipe = new Recipe();
         recipe.setPrice("0");
         assertEquals(0, recipe.getPrice(), "Price should be set to 0.");
-    }
-
-    @Test
-    public void testEquals_identicalObjects() {
-        Recipe recipe1 = new Recipe();
-        recipe1.setName("Latte");
-
-        Recipe recipe2 = new Recipe();
-        recipe2.setName("Latte");
-
-        assertTrue(recipe1.equals(recipe2), "Recipes with the same name should be equal.");
-    }
-
-    @Test
-    public void testEquals_differentObjects() {
-        Recipe recipe1 = new Recipe();
-        recipe1.setName("Latte");
-
-        Recipe recipe2 = new Recipe();
-        recipe2.setName("Mocha");
-
-        assertFalse(recipe1.equals(recipe2), "Recipes with different names should not be equal.");
     }
 
     @Test
@@ -282,6 +236,45 @@ class RecipeTest {
         assertEquals(expectedHashCode, recipe.hashCode(), "HashCode should match expected value.");
     }
 
+    /*
+     * Test equals method
+     */
+
+    @Test
+    public void testEquals_sameObject() {
+        Recipe recipe = new Recipe();
+        assertTrue(recipe.equals(recipe), "An object should equal itself.");
+    }
+
+    @Test
+    public void testEquals_differentObjectSameName() {
+        Recipe recipe1 = new Recipe();
+        Recipe recipe2 = new Recipe();
+        recipe1.setName("Latte");
+        recipe2.setName("Latte");
+        assertTrue(recipe1.equals(recipe2), "Recipes with the same name should be equal.");
+    }
+
+    @Test
+    public void testEquals_differentObjectDifferentName() {
+        Recipe recipe1 = new Recipe();
+        Recipe recipe2 = new Recipe();
+        recipe1.setName("Latte");
+        recipe2.setName("Espresso");
+        assertFalse(recipe1.equals(recipe2), "Recipes with different names should not be equal.");
+    }
+
+    @Test
+    public void testEquals_identicalObjects() {
+        Recipe recipe1 = new Recipe();
+        recipe1.setName("Latte");
+
+        Recipe recipe2 = new Recipe();
+        recipe2.setName("Latte");
+
+        assertTrue(recipe1.equals(recipe2), "Recipes with the same name should be equal.");
+    }
+
     // Test equals when comparing to null
     @Test
     public void testEquals_nullObject() {
@@ -330,47 +323,25 @@ class RecipeTest {
         assertFalse(recipe1.equals(recipe2), "Recipes with different names should not be equal.");
     }
 
+    // Test equals when one name is non-null and the other is null (reverse
+    // scenario)
     @Test
-public void testEquals_nullNameAndNonNullName() {
-    Recipe recipe1 = new Recipe();
-    recipe1.setName(null);
+    public void testEquals_nonNullNameAndNullName() {
+        Recipe recipe1 = new Recipe();
+        recipe1.setName("Latte");
 
-    Recipe recipe2 = new Recipe();
-    recipe2.setName("Latte");
+        Recipe recipe2 = new Recipe();
+        recipe2.setName(null);
 
-    assertFalse(recipe1.equals(recipe2), "Recipe with null name should not equal recipe with non-null name.");
-}
+        assertFalse(recipe1.equals(recipe2), "Recipe with non-null name should not equal recipe with null name.");
+    }
 
-// Test equals when one name is non-null and the other is null (reverse scenario)
-@Test
-public void testEquals_nonNullNameAndNullName() {
-    Recipe recipe1 = new Recipe();
-    recipe1.setName("Latte");
-
-    Recipe recipe2 = new Recipe();
-    recipe2.setName(null);
-
-    assertFalse(recipe1.equals(recipe2), "Recipe with non-null name should not equal recipe with null name.");
-}
-
-@Test
-public void testHashCode_nameNull() {
-    Recipe recipe = new Recipe();
-    recipe.setName(null);
-    int expectedHashCode = 31; // Because name is null, it should use 31 * 1 + 0
-    assertEquals(expectedHashCode, recipe.hashCode(), "HashCode should be 31 when name is null.");
-}
-
-@Test
-public void testEquals_whenNameIsNullAndOtherNameIsNotNull() {
-    Recipe recipe1 = new Recipe();
-    recipe1.setName(null);  // name is null
-
-    Recipe recipe2 = new Recipe();
-    recipe2.setName("Latte");  // other.name is not null
-
-    assertFalse(recipe1.equals(recipe2), "Should return false when this.name is null and other.name is not null.");
-}
-
+    @Test
+    public void testHashCode_nameNull() {
+        Recipe recipe = new Recipe();
+        recipe.setName(null);
+        int expectedHashCode = 31; // Because name is null, it should use 31 * 1 + 0
+        assertEquals(expectedHashCode, recipe.hashCode(), "HashCode should be 31 when name is null.");
+    }
 
 }
