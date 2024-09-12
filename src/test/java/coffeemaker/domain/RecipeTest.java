@@ -327,11 +327,11 @@ class RecipeTest {
     }
 
     @Test
-    public void testHashCode_nameNull() {
+    public void testHashCode_blankName() {
         Recipe recipe = new Recipe();
-        recipe.setName(null);
-        int expectedHashCode = 31; // Because name is null, it should use 31 * 1 + 0
-        assertEquals(expectedHashCode, recipe.hashCode(), "HashCode should be 31 when name is null.");
+        recipe.setName("   "); // Name is blank but not null
+        int expectedHashCode = 31;
+        assertEquals(expectedHashCode, recipe.hashCode(), "Expected hashCode to match for blank name.");
     }
 
 }
