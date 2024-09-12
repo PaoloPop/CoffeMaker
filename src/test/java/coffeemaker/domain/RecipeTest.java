@@ -29,17 +29,6 @@ class RecipeTest {
     }
 
     @Test
-    public void testHashCodeConsistency() {
-        Recipe recipe1 = new Recipe();
-        Recipe recipe2 = new Recipe();
-        recipe1.setName("Latte");
-        recipe2.setName("Latte");
-
-        assertEquals(recipe1.hashCode(), recipe2.hashCode(),
-                "HashCode should be consistent when names are equal.");
-    }
-
-    @Test
     public void testSetAmtCoffee_zeroValueShouldFail() {
         Recipe recipe = new Recipe();
         RecipeException thrown = assertThrows(
@@ -149,16 +138,6 @@ class RecipeTest {
     }
 
     @Test
-    public void testHashCode_differentName() {
-        Recipe recipe1 = new Recipe();
-        Recipe recipe2 = new Recipe();
-        recipe1.setName("Latte");
-        recipe2.setName("Espresso");
-        assertNotEquals(recipe1.hashCode(), recipe2.hashCode(),
-                "Recipes with different names should have different hash codes.");
-    }
-
-    @Test
     public void testSetPrice_zeroValue() throws RecipeException {
         Recipe recipe = new Recipe();
         recipe.setPrice("0");
@@ -170,17 +149,6 @@ class RecipeTest {
         Recipe recipe = new Recipe();
         recipe.setName("Cappuccino");
         assertEquals("Recipe{Cappuccino}", recipe.toString(), "toString should return 'Recipe{Cappuccino}'.");
-    }
-
-    @Test
-    public void testHashCode_differentNames() {
-        Recipe recipe1 = new Recipe();
-        recipe1.setName("Latte");
-
-        Recipe recipe2 = new Recipe();
-        recipe2.setName("Espresso");
-
-        assertNotEquals(recipe1.hashCode(), recipe2.hashCode(), "HashCodes should differ for different recipe names.");
     }
 
     @Test
@@ -220,21 +188,6 @@ class RecipeTest {
         assertEquals("Units of coffee must be a positive integer", thrown.getMessage());
     }
 
-    @Test
-    public void testHashCode_nullName() {
-        Recipe recipe = new Recipe();
-        recipe.setName(null); // Ensure name is null
-        assertEquals(31, recipe.hashCode(), "Expected hashCode to be 31 when name is null.");
-    }
-
-    // Test hashCode with non-null name
-    @Test
-    public void testHashCode_nonNullName() {
-        Recipe recipe = new Recipe();
-        recipe.setName("Latte");
-        int expectedHashCode = 31 * 1 + "Latte".hashCode();
-        assertEquals(expectedHashCode, recipe.hashCode(), "HashCode should match expected value.");
-    }
 
     /*
      * Test equals method
@@ -337,11 +290,48 @@ class RecipeTest {
     }
 
     @Test
-    public void testHashCode_nameNull() {
+    public void testHashCode_differentName() {
+        Recipe recipe1 = new Recipe();
+        Recipe recipe2 = new Recipe();
+        recipe1.setName("Latte");
+        recipe2.setName("Espresso");
+        assertNotEquals(recipe1.hashCode(), recipe2.hashCode(),
+                "Recipes with different names should have different hash codes.");
+    }
+
+    @Test
+    public void testHashCode_nullName() {
         Recipe recipe = new Recipe();
-        recipe.setName(null);
-        int expectedHashCode = 31; // Because name is null, it should use 31 * 1 + 0
-        assertEquals(expectedHashCode, recipe.hashCode(), "HashCode should be 31 when name is null.");
+        recipe.setName(null); // Ensure name is null
+        assertEquals(31, recipe.hashCode(), "Expected hashCode to be 31 when name is null.");
+    }
+
+    @Test
+    public void testHashCodeConsistency() {
+        Recipe recipe1 = new Recipe();
+        Recipe recipe2 = new Recipe();
+        recipe1.setName("Latte");
+        recipe2.setName("Latte");
+
+        assertEquals(recipe1.hashCode(), recipe2.hashCode(),
+                "HashCode should be consistent when names are equal.");
+    }
+
+    // Test hashCode with non-null name
+    @Test
+    public void testHashCode_nonNullName() {
+        Recipe recipe = new Recipe();
+        recipe.setName("Latte");
+        int expectedHashCode = 31 * 1 + "Latte".hashCode();
+        assertEquals(expectedHashCode, recipe.hashCode(), "HashCode should match expected value.");
+    }
+
+    @Test
+    public void testHashCode_blankName() {
+        Recipe recipe = new Recipe();
+        recipe.setName("   "); // Name is blank but not null
+        int expectedHashCode = 31;
+        assertEquals(expectedHashCode, recipe.hashCode(), "Expected hashCode to match for blank name.");
     }
 
 }
