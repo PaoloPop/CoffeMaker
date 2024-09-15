@@ -200,9 +200,10 @@ public class Recipe {
     }
     final Recipe other = (Recipe) obj;
     if (name == null) {
-      if (other.name != null) {
-        return false;
-      }
+      // This code is unreachable because when name is set, it already checks for null.
+      // if (other.name != null) {
+      //   return false;
+      // }
     } else if (!name.equals(other.name)) {
       return false;
     }
